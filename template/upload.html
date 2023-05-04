@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+
+{% block title %}Upload{% endblock title %}
+{% block uploadactive %}active{% endblock uploadactive %}
+
+
+{% block body %}
+<div class="container ">
+    <h1 class="text-center mt-1">Job Application form</h1>
+    <h4 class="text-muted text-center ">Fill the following details to submit your application.</h4>
+
+    {% if user.is_authenticated %}
+
+<form class=" mx-auto col-10 col-md-8 col-lg-6 border  shadow" action=""  method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group mt-2">
+        <label for="exampleFormControlInput1">Name</label>
+        <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="john">
+      </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Email address</label>
+      <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Number</label>
+        <input type="text"name="mob"class="form-control" id="exampleFormControlInput1" placeholder="921XX XXX99">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Profile</label>
+        <input type="text" name="profile" class="form-control" id="exampleFormControlInput1" placeholder="Profile you are applying for">
+      </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Gender</label>
+    <select class="form-control" name="gender">
+        <option>Male</option>
+        <option>Female</option>
+        <option>other</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">State</label>
+        <input type="text" name="state" class="form-control" id="exampleFormControlInput1" >
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">pin</label>
+        <input type="text" name="pin"class="form-control" id="exampleFormControlInput1" placeholder="1100**">
+      </div>
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Upload Resume</label>
+        <input type="file"  name="resume" class="form-control-file" id="exampleFormControlFile1">
+      </div>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  {% else %}
+  <div class="jumbotron">
+    <h1 class="display-4">Hello Applicant</h1>
+    <p class="lead"> Please, Login to proceed further.</p>
+    <hr class="my-4">
+    <p>If you do not have account . <a class="btn btn-primary " role="button" data-toggle="modal"
+      data-target="#signupModal" >SignUp here!</a></p>
+    <a class="btn btn-primary btn-lg" data-toggle="modal"
+    data-target="#loginModal" role="button">Login</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock body %}
